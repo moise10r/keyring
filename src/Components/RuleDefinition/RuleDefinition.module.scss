@@ -1,0 +1,26 @@
+@import '../../assets/styles/variables';
+
+.ruleCreation {
+    .container {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    padding: 5rem;
+}
+
+.ruleSearchForm {
+    border: $default-border;
+    border-radius: $default-border-radius;
+    padding: 4rem;
+    text-align: left;
+
+    .formWrapper {
+        border: $default-border;
+        margin-top: 1rem;
+        border-radius: $default-border-radius;
+        padding: 2rem;
+        background-color: $light-bgcolor;
+    }
+}
