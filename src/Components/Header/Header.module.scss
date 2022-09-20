@@ -1,0 +1,16 @@
+@import "../../assets/scss/variable";
+
+.mainHeaderContainer {
+  width: 100%;
+  height: 7.9rem;
+  background-color: $darkbleu-bgcolor;
+  border-bottom: 0.0001px solid $secondary-text-color;
+  .mainHeaderContent {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
