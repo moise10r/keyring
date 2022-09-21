@@ -73,7 +73,7 @@ const Connector = (props: { activeStep: number }) => {
 };
 
 const StepProgressBar = () => {
-  const [activeStep, setActiveStep] = React.useState(2);
+  const [activeStep, setActiveStep] = React.useState(3);
 
   return (
     <Box sx={{ width: '100%' }} className={styles.StepProgressBar}>
