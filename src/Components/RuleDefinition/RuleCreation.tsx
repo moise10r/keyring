@@ -1,11 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
 import styles from './RuleDefinition.module.scss';
 import RuleSearchForm from './RuleSearchForm';
-import union from '../../assets/images/Union.png'
-import unionPart from '../../assets/images/unionpart.png'
-import { Expression } from '../../models/Expression'
+import union from '../../assets/images/Union.png';
+import unionPart from '../../assets/images/unionpart.png';
+import { Expression } from '../../models/Expression';
 import Rule from '../../models/Rule';
-
 
 const rules = [
   {
@@ -30,18 +29,25 @@ const rules = [
     icon: unionPart,
   },
 ];
-
-
 interface RuleCreationProps {
   selectedExpression: Expression | null;
   selectedRules: Rule[];
   searchValue: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onSelectRule: (rule:any) => void
-  onRemoveRule: (rule:any) => void
+  onSelectRule: (rule: any) => void;
+  onRemoveRule: (rule: any) => void;
+  isFinalStep: boolean;
 }
 
-const RuleCreation = ({selectedExpression, selectedRules,onSelectRule,onRemoveRule,searchValue,onChange}:RuleCreationProps) => {
+const RuleCreation = ({
+  selectedExpression,
+  selectedRules,
+  onSelectRule,
+  onRemoveRule,
+  searchValue,
+  onChange,
+  isFinalStep,
+}: RuleCreationProps) => {
   // const handleSelectRule = (rule: any) => {
   //   setSelectedRules([...selectedRules, rule]);
   //   setSearchValue('');
@@ -55,16 +61,17 @@ const RuleCreation = ({selectedExpression, selectedRules,onSelectRule,onRemoveRu
   // };
 
   return (
-      <div className={styles.container}>
-        <RuleSearchForm
-          rules={rules}
-          onInputChange={onChange}
-          value={searchValue}
-          selectedExpression={selectedExpression}
-          selectedRules={selectedRules}
-          onSelectRule={onSelectRule}
-          onRemoveRule={onRemoveRule}
-        />
+    <div className={styles.container}>
+      <RuleSearchForm
+        rules={rules}
+        onInputChange={onChange}
+        value={searchValue}
+        selectedExpression={selectedExpression}
+        selectedRules={selectedRules}
+        onSelectRule={onSelectRule}
+        onRemoveRule={onRemoveRule}
+        isFinalStep={isFinalStep}
+      />
     </div>
   );
 };

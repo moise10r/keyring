@@ -3,16 +3,19 @@ import SearchDropDownInput from '../SearchDropDownInput/SearchDropDownInput';
 import styles from './RuleDefinition.module.scss';
 import SelectedRule from './SelectedRule';
 import { Expression } from '../../models/Expression';
-import exclamat from '../../assets/images/Vector.png'
+import exclamat from '../../assets/images/Vector.png';
 import Rule from '../../models/Rule';
+
+import spinnerImage from '../../assets/images/spinner.png';
 interface RuleSearchFormProps {
   rules: Array<any>;
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   onSelectRule: (rule: any) => void;
-  selectedRules: Rule[] ;
+  selectedRules: Rule[];
   onRemoveRule: (rule: any) => void;
-  selectedExpression?: Expression | null
+  selectedExpression?: Expression | null;
+  isFinalStep?: boolean;
 }
 
 const RuleSearchForm = (props: RuleSearchFormProps) => {
@@ -23,13 +26,14 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
     onSelectRule,
     selectedRules,
     onRemoveRule,
-    selectedExpression
+    selectedExpression,
+    isFinalStep,
   } = props;
 
   const notSelectedRules = rules.filter(
     (rule) =>
       !selectedRules.find(
-        (selectedRule:Rule) => selectedRule.ruleId === rule.ruleId,
+        (selectedRule: Rule) => selectedRule.ruleId === rule.ruleId,
       ),
   );
 
@@ -45,27 +49,50 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
 
   return (
     <div className={styles.ruleSearchForm}>
-      <h3 className={styles.header}><span><img src={selectedExpression?.image} alt="expression-img" /></span><span>{selectedExpression?.name}</span><span><img src={exclamat} alt="exclamation"/></span></h3>
-      <div className={styles.formWrapper}>
-        <div className={styles.selectedRulesList}>
-          {selectedRules.map((rule) => (
-            <SelectedRule
-              key={rule.ruleId}
-              rule={rule}
-              onRemoveRule={onRemoveRule}
-            />
-          ))}
+      <h3 className={styles.header}>
+        <span>
+          <img src={selectedExpression?.image} alt='expression-img' />
+        </span>
+        <span>{selectedExpression?.name}</span>
+        <span>
+          <img src={exclamat} alt='exclamation' />
+        </span>
+      </h3>
+      {!isFinalStep ? (
+        <>
+          <div className={styles.formWrapper}>
+            <div className={styles.selectedRulesList}>
+              {selectedRules.map((rule) => (
+                <SelectedRule
+                  key={rule.ruleId}
+                  rule={rule}
+                  onRemoveRule={onRemoveRule}
+                />
+              ))}
+            </div>
+            <div className={styles.ruleSearchFormWrapper}>
+              <SearchDropDownInput
+                onInputChange={onInputChange}
+                value={value}
+                rules={filteredRules}
+                onSelectRule={onSelectRule}
+                selectedRules={selectedRules}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className={styles.finalStep}>
+          <div className={styles.loadingContent}>
+            <div className={styles.loading}>
+              <img src={spinnerImage} alt='spinner' />
+            </div>
+            <div className={styles.loadingText}>
+              <span>Sign the transaction</span>
+            </div>
+          </div>
         </div>
-        <div className={styles.ruleSearchFormWrapper}>
-          <SearchDropDownInput
-            onInputChange={onInputChange}
-            value={value}
-            rules={filteredRules}
-            onSelectRule={onSelectRule}
-            selectedRules={selectedRules}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

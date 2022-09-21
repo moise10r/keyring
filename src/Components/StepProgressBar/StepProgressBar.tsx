@@ -57,9 +57,7 @@ const StepIconComponent = (props: {
 };
 
 const Connector = (props: { activeStep: number }) => {
-  // determine if the current step is active or not or if it's completed
   const stepper = React.useContext(StepperContext);
-  // desable type checking for the following line
   // @ts-ignore
   const { connector, activeStep } = stepper;
   // @ts-ignore
@@ -69,17 +67,15 @@ const Connector = (props: { activeStep: number }) => {
   console.log('connector', connector, activeStep);
   return (
     <div
-      className={`${styles.connector} ${isActive ? styles.active : ''} ${
-        isCompleted ? styles.completed : ''
-      }`}
+      className={`${styles.connector} ${isCompleted ? styles.completed : ''}`}
     >
       <div className={styles.line}></div>
     </div>
   );
 };
 
-const StepProgressBar = (props: {currentStep: number}) => {
-  const {currentStep}= props
+const StepProgressBar = (props: { currentStep: number }) => {
+  const { currentStep } = props;
   return (
     <Box sx={{ width: '100%' }} className={styles.StepProgressBar}>
       <Stepper
@@ -99,7 +95,7 @@ const StepProgressBar = (props: {currentStep: number}) => {
                 <StepIconComponent
                   activeStep={currentStep}
                   stepNumber={step.id}
-                  onGoback={() => null }
+                  onGoback={() => null}
                 />
               )}
             >

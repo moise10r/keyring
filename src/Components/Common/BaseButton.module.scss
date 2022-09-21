@@ -1,17 +1,15 @@
 @import '../../assets/scss/variable';
 
-.createRule {
+.BaseButton {
     padding: 0.8rem 2.5rem;
     text-transform: capitalize;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: $primary-text-color;
     background-color: $secondary-color;
     font-weight: 600;
+    box-shadow: none;
+
     &:hover {
-        background-color: darken($secondary-color, 10);
+        box-shadow: none;
     }
-    &:disabled{
-        color: $boder-color;
-        background-color: $black-bgcolor;
-    }
-}   
+}

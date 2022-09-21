@@ -35,16 +35,18 @@
   border-radius: $default-border-radius;
   background-color: rgba(29, 201, 212, 0.2);
   margin: 0.1rem 0.2rem;
- 
+
   .middleContainer {
     display: flex;
     align-items: center;
+
     // margin: 0 0rem;
     .title {
       font-size: 1.3rem;
       margin-right: 0.7rem;
     }
   }
+
   .removeSelected {
     background-color: transparent;
     padding: 0.2rem;
@@ -54,11 +56,51 @@
 .header {
   display: flex;
   align-items: center;
+
   span {
-    &:nth-child(2){
+    &:nth-child(2) {
       color: $primary-text-color;
       font-size: 1.6rem;
       margin: 0 0.5rem;
     }
+  }
+}
+
+.finalStep {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+
+  .loadingContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .loading {
+      margin-bottom: 1rem;
+
+      img {
+        animation: spin 1s linear infinite;
+        animation-play-state: running;
+      }
+
+    }
+
+    .loadingText {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

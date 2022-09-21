@@ -45,10 +45,10 @@
     height: 0.22rem;
     background-color: #ccc;
     position: absolute;
-    top: 0.9rem;
+    top: 1.1rem;
     left: calc(-50%);
     right: calc(50%);
-    // z-index: -1;
+    background-color: $secondary-color;
 
     .line {
         width: 0%;

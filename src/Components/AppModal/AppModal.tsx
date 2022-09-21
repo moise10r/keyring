@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import RuleCreation from "../RuleDefinition/RuleCreation";
-import styles from "./AppModal.module.scss";
-import exclamationImg from "../../assets/images/Vector.png";
-import CloseIcon from "@mui/icons-material/Close";
-import StepProgressBar from "../StepProgressBar/StepProgressBar";
-import RuleEpressionLIst from "../RuleExperssions/RuleEpressionList";
-import union from "../../assets/images/Union.png";
-import intersection from "../../assets/images/intersection.png";
-import difference from "../../assets/images/difference.png";
-import complement from "../../assets/images/complement.png";
-import { Expression } from "../../models/Expression";
-import BaseButton from "../Common/BaseButton";
+import React, { useState } from 'react';
+import RuleCreation from '../RuleDefinition/RuleCreation';
+import styles from './AppModal.module.scss';
+import exclamationImg from '../../assets/images/Vector.png';
+import CloseIcon from '@mui/icons-material/Close';
+import StepProgressBar from '../StepProgressBar/StepProgressBar';
+import RuleEpressionLIst from '../RuleExperssions/RuleEpressionList';
+import union from '../../assets/images/Union.png';
+import intersection from '../../assets/images/intersection.png';
+import difference from '../../assets/images/difference.png';
+import complement from '../../assets/images/complement.png';
+import { Expression } from '../../models/Expression';
+import BaseButton from '../Common/BaseButton';
 
 interface AppModalProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -19,29 +19,29 @@ interface AppModalProps {
 const expressions: Expression[] = [
   {
     id: 1,
-    name: "Union",
+    name: 'Union',
     image: union,
   },
   {
     id: 2,
-    name: "Intersection",
+    name: 'Intersection',
     image: intersection,
   },
   {
     id: 3,
-    name: "Complement",
+    name: 'Complement',
     image: complement,
   },
   {
     id: 4,
-    name: "Difference",
+    name: 'Difference',
     image: difference,
   },
 ];
 
 const AppModal = ({ onClick }: AppModalProps) => {
-  let [currentStep, setCurrentStep] = useState<number>(1);
-  let [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [selectedRules, setSelectedRules]: any = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -49,36 +49,33 @@ const AppModal = ({ onClick }: AppModalProps) => {
   const [selectedExpression, setSelectedExpression] =
     useState<Expression | null>(null);
   const handleSelectExpression = (expression: Expression) => {
-    currentStep = 2;
-    setCurrentStep(currentStep);
+    setCurrentStep(currentStep + 1);
     setSelectedExpression(expression);
   };
 
   const handleCreateRule = () => {
-    console.log("create");
+    setCurrentStep(currentStep + 1);
   };
 
   const handleSelectRule = (rule: any) => {
     setSelectedRules([...selectedRules, rule]);
-    setSearchValue("");
-    setIsDisabled(false)
+    setSearchValue('');
+    setIsDisabled(false);
   };
 
   const handleRemoveRule = (rule: any) => {
     const filteredRules = selectedRules.filter(
-      (r: any) => r.ruleId !== rule.ruleId
+      (r: any) => r.ruleId !== rule.ruleId,
     );
     setSelectedRules(filteredRules);
-    if(filteredRules.length === 0){
-      // setIsDisabled(true)
+    if (filteredRules.length === 0) {
+      setIsDisabled(true);
     }
   };
 
-
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     setSearchValue(e.target.value);
   };
-
 
   const conditionalComponent = () => {
     switch (currentStep) {
@@ -98,11 +95,10 @@ const AppModal = ({ onClick }: AppModalProps) => {
             selectedExpression={selectedExpression}
             searchValue={searchValue}
             onChange={handleInputChange}
+            isFinalStep={false}
           />
         );
       case 3:
-        return;
-      default:
         return (
           <RuleCreation
             selectedRules={selectedRules}
@@ -111,15 +107,18 @@ const AppModal = ({ onClick }: AppModalProps) => {
             selectedExpression={selectedExpression}
             searchValue={searchValue}
             onChange={handleInputChange}
+            isFinalStep={true}
           />
         );
+      default:
+        return;
     }
   };
   return (
     <div className={styles.modelWrapper}>
       <div className={styles.modalHeader}>
         <h2 className={styles.modalTitle}>
-          Rule Builder <img src={exclamationImg} alt="exclamation" />
+          Rule Builder <img src={exclamationImg} alt='exclamation' />
         </h2>
         <button onClick={onClick} className={styles.closeModalBtn}>
           <CloseIcon className={styles.closeIcon} />
@@ -132,8 +131,8 @@ const AppModal = ({ onClick }: AppModalProps) => {
       <div className={styles.createBtnModalContainer}>
         <BaseButton
           onClick={handleCreateRule}
-          name="Create Rule"
-          disabled={isDisabled}
+          name='Create Rule'
+          disabled={isDisabled || currentStep === 3}
         />
       </div>
     </div>
