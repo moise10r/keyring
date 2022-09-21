@@ -10,15 +10,15 @@ import styles from './StepProgressBar.module.scss';
 const steps = [
   {
     id: 1,
-    label: 'Personal Details',
+    label: 'Selecte Expression',
   },
   {
     id: 2,
-    label: 'Address Details',
+    label: 'Define Rule Set',
   },
   {
     id: 3,
-    label: 'Contact Details',
+    label: 'Create Rule',
   },
 ];
 
@@ -71,7 +71,6 @@ const StepProgressBar = (props: { currentStep: number }) => {
         {steps.map((step) => (
           <Step key={step.id}>
             <StepLabel
-              // add class to the connector
               StepIconProps={{
                 completed: currentStep > step.id,
                 active: currentStep === step.id,
@@ -84,7 +83,7 @@ const StepProgressBar = (props: { currentStep: number }) => {
                 />
               )}
             >
-              {step.label}
+              <span className={styles.StepLabel}>{step.label}</span>
             </StepLabel>
           </Step>
         ))}

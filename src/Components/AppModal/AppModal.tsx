@@ -144,11 +144,13 @@ const AppModal = ({ onClick }: AppModalProps) => {
       </div>
       <div className={styles.modalSecondLayer}>{conditionalComponent()}</div>
       <div className={styles.createBtnModalContainer}>
-        <BaseButton
-          onClick={handleCreateRule}
-          name='Create Rule'
-          disabled={isDisabled || currentStep === 3 || currentStep === 4}
-        />
+        {currentStep > 1 && (
+          <BaseButton
+            onClick={handleCreateRule}
+            name='Create Rule'
+            disabled={isDisabled || currentStep === 3 || currentStep === 4}
+          />
+        )}
       </div>
     </div>
   );
