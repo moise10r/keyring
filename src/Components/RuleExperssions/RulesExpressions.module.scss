@@ -1,33 +1,71 @@
 @import "../../assets/scss/variable";
+@import "../../assets/scss/mixins";
 
 .expressionListMainContainer {
     width: 100%;
+
     .expressionList {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+
+        li {
+            width: 250px;
+
+            &:nth-child(odd) {
+                margin-right: 1rem;
+            }
+
+        }
+
+        // @include media($screen-lg) {
+        //     li {
+        //         width: 200px;
+
+        //         &:nth-child(odd) {
+        //             margin-right: 1rem;
+        //         }
+
+        //     }
+        // }
+
+
+        @include media($screen-md) {
+            flex-direction: column;
+
+            li {
+                width: 100%;
+
+                &:nth-child(odd) {
+                    margin-right: 0;
+                }
+            }
+        }
     }
+
     .expressionTitle {
         margin: 1rem 0;
         color: $primary-text-color;
         font-size: 1.6rem;
     }
 }
+
 .ruleExpression {
-    width: 50%;
-    min-width: 240px;
+    width: 100%;
     padding: 0.4rem 0.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: $default-border;
     border-radius: 0.5rem;
-    margin: 0.6rem;
+    margin: 0.6rem 0;
     cursor: pointer;
+
     .rightContainer {
         display: flex;
         align-items: center;
+
         span {
             color: $bleu-color;
             margin-left: 0.5rem;
@@ -35,4 +73,6 @@
             font-size: 1.4rem;
         }
     }
+
+
 }

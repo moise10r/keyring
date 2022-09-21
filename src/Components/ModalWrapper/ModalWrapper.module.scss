@@ -1,3 +1,6 @@
+@import '../../assets/scss/mixins';
+@import '../../assets/scss/variable';
+
 .modalWrapperMain {
     display: flex;
     justify-content: center;
@@ -9,4 +12,13 @@
     width: 60%;
     max-height: 90%;
     overflow-y: auto;
+
+    @include media($screen-md) {
+        width: 80%;
+
+    }
+
+    @include media($screen-sm) {
+        width: 95%;
+    }
 }

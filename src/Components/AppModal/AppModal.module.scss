@@ -1,4 +1,5 @@
 @import "../../assets/scss/variable";
+@import "../../assets/scss/mixins";
 
 .modelWrapper {
     width: 100%;
@@ -6,13 +7,16 @@
     border-radius: 1rem;
     padding: 4rem 2rem;
 
-    // max-height: 500px;
     .modalSecondLayer {
         padding: 5rem;
         width: 90%;
         margin: 0 auto;
         border: $default-border;
         border-radius: $default-border-radius;
+
+        @include media($screen-md) {
+            padding: 2rem;
+        }
     }
 
     .modalHeader {
@@ -40,6 +44,10 @@
             color: $black-bgcolor;
         }
     }
+
+    @include media($screen-md) {
+        padding: 2rem 1rem;
+    }
 }
 
 .stepProgressMainWrapper {
@@ -48,6 +56,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include media($screen-md) {
+        width: 100%;
+    }
 }
 
 .createBtnModalContainer {
@@ -55,6 +67,10 @@
     margin: 1rem auto;
     display: flex;
     justify-content: flex-end;
+
+    @include media($screen-md) {
+        width: 100%;
+    }
 }
 
 .createRule {
@@ -64,6 +80,7 @@
     color: $primary-text-color;
     background-color: $secondary-color;
     font-weight: 600;
+
 
     &:hover {
         background-color: darken($secondary-color, 10);
