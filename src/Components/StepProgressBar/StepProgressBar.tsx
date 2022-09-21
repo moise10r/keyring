@@ -5,12 +5,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import CheckIcon from '@mui/icons-material/Check';
 
-import StepConnector, {
-  stepConnectorClasses,
-} from '@mui/material/StepConnector';
-
 import styles from './StepProgressBar.module.scss';
-import { styled } from '@mui/material/styles';
 
 const steps = [
   {
@@ -27,22 +22,15 @@ const steps = [
   },
 ];
 
-interface StepIconComponentProps {
-  activeStep: number;
-  stepNumber: number;
-  onGoback: () => void;
-}
-
 const StepIconComponent = (props: {
   activeStep: number;
   stepNumber: number;
   onGoback: () => void;
 }) => {
-  const { stepNumber, activeStep, onGoback } = props;
+  const { stepNumber, activeStep } = props;
   const isActive = activeStep === stepNumber;
   return (
     <div
-      // onClick={onGoback}
       className={`${styles.StepIconComponent} ${
         isActive ? styles.active : ''
       } ${stepNumber < activeStep ? styles.completed : ''}`}
@@ -59,12 +47,9 @@ const StepIconComponent = (props: {
 const Connector = (props: { activeStep: number }) => {
   const stepper = React.useContext(StepperContext);
   // @ts-ignore
-  const { connector, activeStep } = stepper;
-  // @ts-ignore
-  const isActive = activeStep === props.activeStep;
+  const { activeStep } = stepper;
   const isCompleted = activeStep > props.activeStep;
 
-  console.log('connector', connector, activeStep);
   return (
     <div
       className={`${styles.connector} ${isCompleted ? styles.completed : ''}`}

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import styles from './RuleDefinition.module.scss';
 import RuleSearchForm from './RuleSearchForm';
 import union from '../../assets/images/Union.png';
@@ -50,18 +50,6 @@ const RuleCreation = ({
   isFinalStep,
   onChangeCurrentStep,
 }: RuleCreationProps) => {
-  // const handleSelectRule = (rule: any) => {
-  //   setSelectedRules([...selectedRules, rule]);
-  //   setSearchValue('');
-  // };
-
-  // const handleRemoveRule = (rule: any) => {
-  //   const filteredRules = selectedRules.filter(
-  //     (r: any) => r.ruleId !== rule.ruleId,
-  //   );
-  //   setSelectedRules(filteredRules);
-  // };
-
   return (
     <div className={styles.container}>
       <RuleSearchForm

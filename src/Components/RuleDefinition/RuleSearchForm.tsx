@@ -32,9 +32,6 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
     onChangeCurrentStep,
   } = props;
 
-  // count 10 seconds then set the onChangeCurrentStep to 4
-  // then count 5 seconds then set the onChangeCurrentStep to 1
-
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
@@ -49,7 +46,7 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
       onChangeCurrentStep && onChangeCurrentStep(4);
     }
     return () => clearTimeout(timer);
-  }, [count]);
+  }, [count, onChangeCurrentStep]);
 
   const notSelectedRules = rules.filter(
     (rule) =>
