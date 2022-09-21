@@ -16,6 +16,7 @@ interface RuleSearchFormProps {
   onRemoveRule: (rule: any) => void;
   selectedExpression?: Expression | null;
   isFinalStep?: boolean;
+  onChangeCurrentStep?: (step: number) => void;
 }
 
 const RuleSearchForm = (props: RuleSearchFormProps) => {
@@ -28,7 +29,27 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
     onRemoveRule,
     selectedExpression,
     isFinalStep,
+    onChangeCurrentStep,
   } = props;
+
+  // count 10 seconds then set the onChangeCurrentStep to 4
+  // then count 5 seconds then set the onChangeCurrentStep to 1
+
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (count === 5) {
+        return;
+      }
+      setCount(count + 1);
+    }, 1000);
+
+    if (count === 5) {
+      onChangeCurrentStep && onChangeCurrentStep(4);
+    }
+    return () => clearTimeout(timer);
+  }, [count]);
 
   const notSelectedRules = rules.filter(
     (rule) =>
@@ -55,7 +76,11 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
         </span>
         <span>{selectedExpression?.name}</span>
         <span>
-          <img src={exclamat} alt='exclamation' />
+          <img
+            src={exclamat}
+            alt='exclamation'
+            className={count === 10 ? styles.exclamation : ''}
+          />
         </span>
       </h3>
       {!isFinalStep ? (
@@ -85,7 +110,11 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
         <div className={styles.finalStep}>
           <div className={styles.loadingContent}>
             <div className={styles.loading}>
-              <img src={spinnerImage} alt='spinner' />
+              <img
+                src={spinnerImage}
+                alt='spinner'
+                className={`${count === 5 ? styles.endSpinner : ''}`}
+              />
             </div>
             <div className={styles.loadingText}>
               <span>Sign the transaction</span>

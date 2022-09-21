@@ -108,8 +108,23 @@ const AppModal = ({ onClick }: AppModalProps) => {
             searchValue={searchValue}
             onChange={handleInputChange}
             isFinalStep={true}
+            onChangeCurrentStep={setCurrentStep}
           />
         );
+      case 4:
+        return (
+          <RuleCreation
+            selectedRules={selectedRules}
+            onSelectRule={handleSelectRule}
+            onRemoveRule={handleRemoveRule}
+            selectedExpression={selectedExpression}
+            searchValue={searchValue}
+            onChange={handleInputChange}
+            isFinalStep={true}
+            onChangeCurrentStep={setCurrentStep}
+          />
+        );
+
       default:
         return;
     }
@@ -132,7 +147,7 @@ const AppModal = ({ onClick }: AppModalProps) => {
         <BaseButton
           onClick={handleCreateRule}
           name='Create Rule'
-          disabled={isDisabled || currentStep === 3}
+          disabled={isDisabled || currentStep === 3 || currentStep === 4}
         />
       </div>
     </div>

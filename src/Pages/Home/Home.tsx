@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import styles from "./Home.module.scss";
-import Header from "../../Components/Header/Header";
-import BaseButton from "../../Components/Common/BaseButton";
-import AppModal from "../../Components/AppModal/AppModal";
+import React, { useState } from 'react';
+import styles from './Home.module.scss';
+import Header from '../../Components/Header/Header';
+import BaseButton from '../../Components/Common/BaseButton';
+import AppModal from '../../Components/AppModal/AppModal';
+import ModalWrapper from '../../Components/ModalWrapper/ModalWrapper';
 
 function Home() {
   const [isModalOpen, setIsModalOPen] = useState(false);
@@ -11,7 +12,7 @@ function Home() {
   };
   const handleCloseModal = () => {
     setIsModalOPen(false);
-  }
+  };
   return (
     <div className={styles.mainHomeContainer}>
       <div className={styles.mainHomeContent}>
@@ -27,20 +28,22 @@ function Home() {
             <div className={styles.createRuleBtnContainer}>
               <BaseButton
                 onClick={handleOPenModal}
-                name="Create Rule"
+                name='Create Rule'
                 disabled={false}
               />
             </div>
           </div>
         </div>
         {isModalOpen && (
-              <div className={styles.modalContainer}>
-                <div className={styles.modalBg}></div>
-                <div className={styles.modalContentWrapper}>
-                    <AppModal onClick={handleCloseModal} />
-                </div>
-              </div>
-            )}
+          <div className={styles.modalContainer}>
+            <div className={styles.modalBg}></div>
+            <div className={styles.modalContentWrapper}>
+              <ModalWrapper open={isModalOpen} onClose={handleCloseModal}>
+                <AppModal onClick={handleCloseModal} />
+              </ModalWrapper>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

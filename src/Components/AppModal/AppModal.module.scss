@@ -5,6 +5,7 @@
     background-color: $light-bgcolor;
     border-radius: 1rem;
     padding: 4rem 2rem;
+
     // max-height: 500px;
     .modalSecondLayer {
         padding: 5rem;
@@ -13,6 +14,7 @@
         border: $default-border;
         border-radius: $default-border-radius;
     }
+
     .modalHeader {
         width: 90%;
         margin: 0 auto;
@@ -20,18 +22,22 @@
         align-items: center;
         justify-content: space-between;
     }
+
     .modalTitle {
         font-size: 1.8rem;
         color: $primary-text-color;
+
         img {
             margin-left: 0.5rem;
         }
     }
+
     .closeModalBtn {
         background-color: $light-bgcolor;
+
         .closeIcon {
             font-size: 2.5rem;
-            color: $black-bgcolor;    
+            color: $black-bgcolor;
         }
     }
 }
@@ -58,10 +64,12 @@
     color: $primary-text-color;
     background-color: $secondary-color;
     font-weight: 600;
+
     &:hover {
         background-color: darken($secondary-color, 10);
     }
-    &:disabled{
+
+    &:disabled {
         color: $boder-color;
         background-color: $black-bgcolor;
     }

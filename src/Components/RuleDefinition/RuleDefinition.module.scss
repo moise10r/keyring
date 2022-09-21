@@ -84,6 +84,12 @@
       img {
         animation: spin 1s linear infinite;
         animation-play-state: running;
+
+      }
+
+      img.endSpinner {
+        animation-play-state: paused;
+        animation: none;
       }
 
     }

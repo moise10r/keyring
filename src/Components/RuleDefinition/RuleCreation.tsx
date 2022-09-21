@@ -37,6 +37,7 @@ interface RuleCreationProps {
   onSelectRule: (rule: any) => void;
   onRemoveRule: (rule: any) => void;
   isFinalStep: boolean;
+  onChangeCurrentStep?: (step: number) => void;
 }
 
 const RuleCreation = ({
@@ -47,6 +48,7 @@ const RuleCreation = ({
   searchValue,
   onChange,
   isFinalStep,
+  onChangeCurrentStep,
 }: RuleCreationProps) => {
   // const handleSelectRule = (rule: any) => {
   //   setSelectedRules([...selectedRules, rule]);
@@ -71,6 +73,7 @@ const RuleCreation = ({
         onSelectRule={onSelectRule}
         onRemoveRule={onRemoveRule}
         isFinalStep={isFinalStep}
+        onChangeCurrentStep={onChangeCurrentStep}
       />
     </div>
   );
