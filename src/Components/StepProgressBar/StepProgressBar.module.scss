@@ -1,0 +1,70 @@
+@import '../../assets/scss//variable';
+
+.StepProgressBar {
+    margin-top: 5rem;
+}
+
+.StepIconComponent {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    background-color: #ccc;
+    cursor: pointer;
+    transform: translateY(0.3rem);
+    border: 8px solid $white-color;
+    border-top: none;
+    border-bottom: none;
+
+    &.completed {
+        width: 1.8rem;
+        height: 1.8rem;
+        background-color: $secondary-color;
+        transform: none;
+
+    }
+
+    &.active {
+        width: 1.8rem;
+        height: 1.8rem;
+        background-color: $secondary-color;
+        transform: none;
+    }
+}
+
+.checkIcon {
+    color: $white-color;
+}
+
+.connector {
+    width: 100%;
+    height: 0.22rem;
+    background-color: #ccc;
+    position: absolute;
+    top: 0.9rem;
+    left: calc(-50%);
+    right: calc(50%);
+    z-index: -1;
+
+    .line {
+        width: 0%;
+        height: 100%;
+        background-color: $secondary-color;
+    }
+
+    &.completed {
+        .line {
+            width: 100%;
+        }
+    }
+
+    &.active {
+        .line {
+            width: 50%;
+        }
+    }
+
+}

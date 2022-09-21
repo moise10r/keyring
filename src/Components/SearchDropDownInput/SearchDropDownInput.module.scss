@@ -1,0 +1,97 @@
+@import '../../assets/scss/variable';
+
+.searchDropDownInput {
+    .inputInfoRwapper {
+        border-radius: $default-border-radius;
+        padding: 0.8rem 0.7rem;
+        border: $default-border;
+        border-color: lighten($primary-text-color, 50%);
+        display: flex;
+        align-items: center;
+        background-color: $white-color;
+        border-width: 0.123rem;
+
+        &:focus-within {
+            border-color: $blue-color;
+        }
+
+    }
+
+    .iconWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.3rem;
+
+        .searchIcon {
+            color: $blue-color;
+            font-size: 1.9rem;
+        }
+    }
+
+    .inputWrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .input {
+            border: none;
+            flex: 1;
+            background-color: transparent;
+            padding: 0.1rem 0.5rem;
+
+            font-weight: 300;
+            outline: none;
+            font-size: 1.2rem;
+
+
+            &::placeholder {
+                color: darken($secondary-text-color, 30%);
+                font-weight: 300;
+
+            }
+        }
+    }
+
+
+}
+
+.dropDownListWrapper {
+    .dropDownList {
+        margin-top: 1rem;
+        background-color: $white-color;
+        border-radius: $default-border-radius;
+        border: $default-border;
+        padding: 0.5rem;
+    }
+}
+
+.dropDownRuleItem {
+    padding: 0.7rem 2rem;
+    cursor: pointer;
+    display: flex;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+
+    transition: $default-transition;
+    border-radius: $default-border-radius;
+
+    &:hover {
+        background-color: $light-bgcolor;
+    }
+
+    .title {
+        margin: 0 0.6rem;
+    }
+
+}
+
+.emptyListIndicator {
+    padding: 0.7rem 2rem;
+    color: $secondary-text-color;
+}

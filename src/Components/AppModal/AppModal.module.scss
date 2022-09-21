@@ -1,0 +1,36 @@
+@import "../../assets/scss/variable";
+
+.modelWrapper {
+    width: 100%;
+    background-color: $light-bgcolor;
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    .modalSecondLayer {
+        padding: 5rem;
+        width: 90%;
+        margin: 0 auto;
+        border: $default-border;
+        border-radius: $default-border-radius;
+    }
+    .modalHeader {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .modalTitle {
+        font-size: 1.8rem;
+        color: $primary-text-color;
+        img {
+            margin-left: 0.5rem;
+        }
+    }
+    .closeModalBtn {
+        background-color: $light-bgcolor;
+        .closeIcon {
+            font-size: 2.5rem;
+            color: $black-bgcolor;    
+        }
+    }
+}
