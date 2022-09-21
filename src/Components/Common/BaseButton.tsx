@@ -5,17 +5,28 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   name?: string;
   disabled?: boolean;
+  children?: React.ReactNode;
+  color?: 'primary' | 'secondary';
+  variant?: 'contained' | 'outlined' | 'text';
 }
 
-const BaseButton = ({ onClick, name, disabled }: ButtonProps) => {
+const BaseButton = ({
+  onClick,
+  name,
+  disabled,
+  children,
+  color,
+  variant,
+}: ButtonProps) => {
   return (
     <Button
       className={styles.BaseButton}
-      variant='contained'
       onClick={onClick}
       disabled={disabled}
+      color={color || 'primary'}
+      variant={variant || 'contained'}
     >
-      {name}
+      {children || name}
     </Button>
   );
 };

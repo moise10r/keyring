@@ -1,11 +1,10 @@
 @import '../../assets/scss/variable';
 
 .BaseButton {
-    padding: 0.8rem 2.5rem;
-    text-transform: capitalize;
-    font-size: 1.4rem;
+    padding: 0.8rem 2.5rem !important;
+    text-transform: capitalize !important;
+    font-size: 1.4rem !important;
     color: $primary-text-color;
-    background-color: $secondary-color;
     font-weight: 600;
     box-shadow: none;
 

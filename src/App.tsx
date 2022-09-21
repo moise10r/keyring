@@ -12,9 +12,9 @@ function App() {
         dark: '#1dc9d4',
       },
       secondary: {
-        main: '#1dc9d4',
-        light: '#a1a1a1',
-        dark: '#1dc9d4',
+        main: '#a6a6a6',
+        light: '#a6a6a6',
+        dark: '#a6a6a6',
       },
       success: {
         main: '#1dc9d4',
