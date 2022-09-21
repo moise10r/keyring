@@ -27,6 +27,12 @@ const steps = [
   },
 ];
 
+interface StepIconComponentProps {
+  activeStep: number;
+  stepNumber: number;
+  onGoback: () => void;
+}
+
 const StepIconComponent = (props: {
   activeStep: number;
   stepNumber: number;
@@ -36,7 +42,7 @@ const StepIconComponent = (props: {
   const isActive = activeStep === stepNumber;
   return (
     <div
-      onClick={onGoback}
+      // onClick={onGoback}
       className={`${styles.StepIconComponent} ${
         isActive ? styles.active : ''
       } ${stepNumber < activeStep ? styles.completed : ''}`}
@@ -72,33 +78,28 @@ const Connector = (props: { activeStep: number }) => {
   );
 };
 
-const StepProgressBar = () => {
-  const [activeStep, setActiveStep] = React.useState(2);
-
+const StepProgressBar = (props: {currentStep: number}) => {
+  const {currentStep}= props
   return (
     <Box sx={{ width: '100%' }} className={styles.StepProgressBar}>
       <Stepper
-        activeStep={activeStep}
+        activeStep={currentStep}
         alternativeLabel
-        connector={<Connector activeStep={activeStep} />}
+        connector={<Connector activeStep={currentStep} />}
       >
         {steps.map((step) => (
           <Step key={step.id}>
             <StepLabel
               // add class to the connector
               StepIconProps={{
-                completed: activeStep > step.id,
-                active: activeStep === step.id,
+                completed: currentStep > step.id,
+                active: currentStep === step.id,
               }}
               StepIconComponent={() => (
                 <StepIconComponent
-                  activeStep={activeStep}
+                  activeStep={currentStep}
                   stepNumber={step.id}
-                  onGoback={() =>
-                    activeStep !== 1 && activeStep === step.id
-                      ? setActiveStep(step.id - 1)
-                      : null
-                  }
+                  onGoback={() => null }
                 />
               )}
             >

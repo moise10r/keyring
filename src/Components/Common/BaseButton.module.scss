@@ -1,0 +1,17 @@
+@import '../../assets/scss/variable';
+
+.createRule {
+    padding: 0.8rem 2.5rem;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: $primary-text-color;
+    background-color: $secondary-color;
+    font-weight: 600;
+    &:hover {
+        background-color: darken($secondary-color, 10);
+    }
+    &:disabled{
+        color: $boder-color;
+        background-color: $black-bgcolor;
+    }
+}   

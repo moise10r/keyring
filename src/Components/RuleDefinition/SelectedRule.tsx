@@ -1,15 +1,10 @@
 import React from 'react';
 import styles from './RuleDefinition.module.scss';
 import exclamatImg from '../../assets/images/Vector.png'
+import Rule from '../../models/Rule';
 
 interface SelectedRuleProps {
-  rule: {
-    id: string;
-    title: string;
-    rype: string;
-    icon: string;
-    usedBy: [];
-  };
+  rule: Rule;
   onRemoveRule: (rule: any) => void;
 }
 const SelectedRule = (props: SelectedRuleProps) => {

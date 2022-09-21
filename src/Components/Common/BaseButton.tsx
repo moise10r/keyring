@@ -1,20 +1,17 @@
 import React from "react";
 import Button from "@mui/material/Button";
-
+import styles from './BaseButton.module.scss';
 interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   name?: string;
   disabled?: boolean;
-  className: any
 }
 
-const BaseButton = ({ onClick, name, disabled, className }: ButtonProps) => {
+const BaseButton = ({ onClick, name, disabled }: ButtonProps) => {
   return (
-    <div>
-      <Button className={className} variant="contained" onClick={onClick} disabled={disabled}>
+      <Button className={styles.createRule} variant="contained" onClick={onClick} disabled={disabled}>
         {name}
       </Button>
-    </div>
   );
 }
 

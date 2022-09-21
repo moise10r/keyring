@@ -4,6 +4,7 @@ import RuleSearchForm from './RuleSearchForm';
 import union from '../../assets/images/Union.png'
 import unionPart from '../../assets/images/unionpart.png'
 import { Expression } from '../../models/Expression'
+import Rule from '../../models/Rule';
 
 
 const rules = [
@@ -30,40 +31,39 @@ const rules = [
   },
 ];
 
+
 interface RuleCreationProps {
-  selectedExpression: Expression | null
+  selectedExpression: Expression | null;
+  selectedRules: Rule[];
+  searchValue: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSelectRule: (rule:any) => void
+  onRemoveRule: (rule:any) => void
 }
 
-const RuleCreation = ({selectedExpression}:RuleCreationProps) => {
-  const [selectedRules, setSelectedRules]: any = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+const RuleCreation = ({selectedExpression, selectedRules,onSelectRule,onRemoveRule,searchValue,onChange}:RuleCreationProps) => {
+  // const handleSelectRule = (rule: any) => {
+  //   setSelectedRules([...selectedRules, rule]);
+  //   setSearchValue('');
+  // };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
-
-  const handleSelectRule = (rule: any) => {
-    setSelectedRules([...selectedRules, rule]);
-    setSearchValue('');
-  };
-
-  const handleRemoveRule = (rule: any) => {
-    const filteredRules = selectedRules.filter(
-      (r: any) => r.ruleId !== rule.ruleId,
-    );
-    setSelectedRules(filteredRules);
-  };
+  // const handleRemoveRule = (rule: any) => {
+  //   const filteredRules = selectedRules.filter(
+  //     (r: any) => r.ruleId !== rule.ruleId,
+  //   );
+  //   setSelectedRules(filteredRules);
+  // };
 
   return (
       <div className={styles.container}>
         <RuleSearchForm
           rules={rules}
-          onInputChange={handleInputChange}
+          onInputChange={onChange}
           value={searchValue}
           selectedExpression={selectedExpression}
           selectedRules={selectedRules}
-          onSelectRule={handleSelectRule}
-          onRemoveRule={handleRemoveRule}
+          onSelectRule={onSelectRule}
+          onRemoveRule={onRemoveRule}
         />
     </div>
   );

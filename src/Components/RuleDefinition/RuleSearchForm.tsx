@@ -4,12 +4,13 @@ import styles from './RuleDefinition.module.scss';
 import SelectedRule from './SelectedRule';
 import { Expression } from '../../models/Expression';
 import exclamat from '../../assets/images/Vector.png'
+import Rule from '../../models/Rule';
 interface RuleSearchFormProps {
   rules: Array<any>;
   onInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   onSelectRule: (rule: any) => void;
-  selectedRules: Array<any>;
+  selectedRules: Rule[] ;
   onRemoveRule: (rule: any) => void;
   selectedExpression?: Expression | null
 }
@@ -28,7 +29,7 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
   const notSelectedRules = rules.filter(
     (rule) =>
       !selectedRules.find(
-        (selectedRule) => selectedRule.ruleId === rule.ruleId,
+        (selectedRule:Rule) => selectedRule.ruleId === rule.ruleId,
       ),
   );
 
@@ -49,7 +50,7 @@ const RuleSearchForm = (props: RuleSearchFormProps) => {
         <div className={styles.selectedRulesList}>
           {selectedRules.map((rule) => (
             <SelectedRule
-              key={rule.id}
+              key={rule.ruleId}
               rule={rule}
               onRemoveRule={onRemoveRule}
             />
